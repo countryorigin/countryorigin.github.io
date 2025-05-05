@@ -144,3 +144,15 @@
     display: none;
     margin: 3vh auto 0;
 }
+
+
+@media (max-width: 700px) {
+    .dvPlc {
+        width: 90%;
+    }
+
+    .hidWrd {
+        font-size: 20px;
+    }
+    
+}
