@@ -1,0 +1,42 @@
+
+let cuntrys =[{prefix:19,prefix2:21,barcode_name:"Used to issue Limited Circulation Numbers within a geographical area (MO defined)"},{prefix:29,prefix2:40,barcode_name:"OUR "},{prefix:39,prefix2:50,barcode_name:"Used to issue Restricted Circulation Numbers within the company"},{prefix:49,prefix2:60,barcode_name:" US reserved for future use"},{prefix:59,prefix2:140,barcode_name:"OUR "},{prefix:199,prefix2:300,barcode_name:"Used to issue Restricted Circulation Numbers within a     geographical area (MO defined)"},{prefix:299,prefix2:380,barcode_name:" France"},{prefix:379,prefix2:381,barcode_name:" Bulgaria"},{prefix:382,prefix2:384,barcode_name:" Slovenia"},{prefix:384,prefix2:386,barcode_name:" Croatia"},{prefix:386,prefix2:388,barcode_name:" BIH (Bosnia-Herzegovina)"},{prefix:388,prefix2:390,barcode_name:" Montenegro"},{prefix:399,prefix2:441,barcode_name:" Germany"},{prefix:449,prefix2:460,barcode_name:" Japan"},{prefix:459,prefix2:470,barcode_name:" Russia"},{prefix:469,prefix2:471,barcode_name:" Kyrgyz Republic"},{prefix:470,prefix2:472,barcode_name:" Chinese Taipei"},{prefix:473,prefix2:475,barcode_name:" Estonia"},{prefix:474,prefix2:476,barcode_name:" Latvia"},{prefix:475,prefix2:477,barcode_name:" Azerbaijan"},{prefix:476,prefix2:478,barcode_name:" Lithuania"},{prefix:477,prefix2:479,barcode_name:" Uzbekistan"},{prefix:478,prefix2:480,barcode_name:" Sri Lanka"},{prefix:479,prefix2:481,barcode_name:" Philippines"},{prefix:480,prefix2:482,barcode_name:" Belarus"},{prefix:481,prefix2:483,barcode_name:" Ukraine"},{prefix:482,prefix2:484,barcode_name:" Turkmenistan"},{prefix:483,prefix2:485,barcode_name:" Moldova"},{prefix:484,prefix2:486,barcode_name:" Armenia"},{prefix:485,prefix2:487,barcode_name:" Georgia"},{prefix:486,prefix2:488,barcode_name:" Kazakhstan"},{prefix:487,prefix2:489,barcode_name:" Tajikistan"},{prefix:488,prefix2:490,barcode_name:" Hong Kong, China"},{prefix:489,prefix2:500,barcode_name:" Japan"},{prefix:499,prefix2:510,barcode_name:" UK"},{prefix:519,prefix2:522,barcode_name:" Greek Association"},{prefix:527,prefix2:529,barcode_name:" Lebanon"},{prefix:528,prefix2:530,barcode_name:" Cyprus"},{prefix:529,prefix2:531,barcode_name:" Albania"},{prefix:530,prefix2:532,barcode_name:" Macedonia"},{prefix:534,prefix2:536,barcode_name:" Malta"},{prefix:538,prefix2:540,barcode_name:" Ireland"},{prefix:539,prefix2:550,barcode_name:" Belgium & Luxembourg"},{prefix:559,prefix2:561,barcode_name:" Portugal"},{prefix:568,prefix2:570,barcode_name:" Iceland"},{prefix:569,prefix2:580,barcode_name:" Denmark"},{prefix:589,prefix2:591,barcode_name:" Poland"},{prefix:593,prefix2:595,barcode_name:" Romania"},{prefix:598,prefix2:600,barcode_name:" Hungary"},{prefix:599,prefix2:602,barcode_name:" South Africa"},{prefix:602,prefix2:604,barcode_name:" Ghana"},{prefix:603,prefix2:605,barcode_name:" Senegal"},{prefix:604,prefix2:606,barcode_name:"Managed by Global Office for future MOs"},{prefix:605,prefix2:607,barcode_name:"Managed by Global Office for future MOs"},{prefix:606,prefix2:608,barcode_name:" Oman"},{prefix:607,prefix2:609,barcode_name:" Bahrain"},{prefix:608,prefix2:610,barcode_name:" Mauritius"},{prefix:609,prefix2:611,barcode_name:"Managed by Global Office for future MOs"},{prefix:610,prefix2:612,barcode_name:" Morocco"},{prefix:612,prefix2:614,barcode_name:" Algeria"},{prefix:613,prefix2:615,barcode_name:"Managed by Global Office for future MOs"},{prefix:614,prefix2:616,barcode_name:" Nigeria"},{prefix:615,prefix2:617,barcode_name:" Kenya"},{prefix:616,prefix2:618,barcode_name:" Cameroon"},{prefix:617,prefix2:619,barcode_name:" Ivory Coast"},{prefix:618,prefix2:620,barcode_name:" Tunisia"},{prefix:619,prefix2:621,barcode_name:" Tanzania"},{prefix:620,prefix2:622,barcode_name:" Syria"},{prefix:621,prefix2:623,barcode_name:" Egypt"},{prefix:622,prefix2:624,barcode_name:"Managed by Global Office for future MO"},{prefix:623,prefix2:625,barcode_name:" Libya"},{prefix:624,prefix2:626,barcode_name:" Jordan"},{prefix:625,prefix2:627,barcode_name:" Iran"},{prefix:626,prefix2:628,barcode_name:" Kuwait"},{prefix:627,prefix2:629,barcode_name:" Saudi Arabia"},{prefix:628,prefix2:630,barcode_name:" Emirates"},{prefix:629,prefix2:631,barcode_name:" Qatar"},{prefix:630,prefix2:632,barcode_name:"Namibia"},{prefix:639,prefix2:650,barcode_name:" Finland"},{prefix:679,prefix2:682,barcode_name:" China"},{prefix:689,prefix2:700,barcode_name:" China"},{prefix:699,prefix2:710,barcode_name:" Norway"},{prefix:728,prefix2:730,barcode_name:" Israel"},{prefix:729,prefix2:740,barcode_name:" Sweden"},{prefix:739,prefix2:741,barcode_name:" Guatemala"},{prefix:740,prefix2:742,barcode_name:" El Salvador"},{prefix:741,prefix2:743,barcode_name:" Honduras"},{prefix:742,prefix2:744,barcode_name:" Nicaragua"},{prefix:743,prefix2:745,barcode_name:" Costa Rica"},{prefix:744,prefix2:746,barcode_name:" Panama"},{prefix:745,prefix2:747,barcode_name:" Republica Dominicana"},{prefix:749,prefix2:751,barcode_name:" Mexico"},{prefix:753,prefix2:756},{prefix:758,prefix2:760,barcode_name:" Venezuela"},{prefix:759,prefix2:770,barcode_name:" Schweiz, Suisse, Svizzera"},{prefix:769,prefix2:772,barcode_name:" Colombia"},{prefix:772,prefix2:774,barcode_name:" Uruguay"},{prefix:774,prefix2:776,barcode_name:" Peru"},{prefix:776,prefix2:778,barcode_name:"Bolivia"},{prefix:777,prefix2:780,barcode_name:"Argentina"},{prefix:779,prefix2:781,barcode_name:" Chile"},{prefix:783,prefix2:785,barcode_name:"Paraguay"},{prefix:785,prefix2:787,barcode_name:"Ecuador"},{prefix:788,prefix2:791,barcode_name:"Brazil"},{prefix:788,prefix2:791,barcode_name:"Brazil"},{prefix:799,prefix2:840,barcode_name:"Italy"},{prefix:839,prefix2:850,barcode_name:"Spain"},{prefix:849,prefix2:851,barcode_name:" Cuba"},{prefix:857,prefix2:859,barcode_name:"Slovakia"},{prefix:858,prefix2:860,barcode_name:" Czech"},{prefix:859,prefix2:861,barcode_name:" Serbia"},{prefix:864,prefix2:866,barcode_name:"Mongolia"},{prefix:866,prefix2:868,barcode_name:"North Korea"},{prefix:867,prefix2:870,barcode_name:"Türkiye"},{prefix:869,prefix2:880,barcode_name:"Netherlands"},{prefix:879,prefix2:882,barcode_name:"South Korea"},{prefix:882,prefix2:884,barcode_name:"Myanmar"},{prefix:883,prefix2:885,barcode_name:"Cambodia"},{prefix:884,prefix2:886,barcode_name:"Thailand"},{prefix:887,prefix2:889,barcode_name:"Singapore"},{prefix:889,prefix2:891,barcode_name:" India"},{prefix:892,prefix2:894,barcode_name:"Vietnam"},{prefix:893,prefix2:895,barcode_name:"Managed by Global Office for future MO"},{prefix:895,prefix2:897,barcode_name:"Pakistan"},{prefix:898,prefix2:900,barcode_name:"Indonesia"},{prefix:899,prefix2:920,barcode_name:"Austria"},{prefix:929,prefix2:940,barcode_name:"Australia"},{prefix:939,prefix2:950,barcode_name:"New Zealand"},{prefix:949,prefix2:951,barcode_name:"Global Office"},{prefix:950,prefix2:952,barcode_name:"Global Office - General Manager Number, see Note 2"},{prefix:951,prefix2:953,barcode_name:"Used for demonstrations and examples of the system"},{prefix:954,prefix2:956,barcode_name:"Malaysia"},{prefix:957,prefix2:959,barcode_name:"Macau, China"},{prefix:959,prefix2:970,barcode_name:"Office - GTIN-8, see note 3"},{prefix:976,prefix2:978,barcode_name:"publications (ISSN)"},{prefix:977,prefix2:980,barcode_name:"(ISBN)"},{prefix:979,prefix2:981,barcode_name:"receipts"},{prefix:980,prefix2:984,barcode_name:" coupon identification for common currency areas"},{prefix:98,prefix2:100,barcode_name:"coupon identification"}];
+gebi("divplac").addEventListener("click", n => {n.stopPropagation()});
+let  hiding = ()=> {
+    gebi('opNew').style.display = "block";
+    setTimeout(() => {
+        gebi("divplac").className = "dvPlc";
+    }, 50)
+    setTimeout(() => {
+        slctAll('.hidjs').forEach(el => {
+            el.style.display = "none";
+        })
+  
+    }, 450)
+  }
+  function gebi(pr) {return document.getElementById(pr) }
+  slctAll('.cler').forEach(el => {el.addEventListener('click',hiding) });
+function slctAll(pr) {return document.querySelectorAll(pr) };
+
+
+
+
+
+/* 
+let cuntrys2 = [];
+let prefix2 = 0;
+let prefix = 0;
+for(let i = 0; i < cuntrys.length; i++){
+    prefix = cuntrys[i].prefix*1-1;
+    prefix2 = cuntrys[i].prefix2*1+1;
+   
+   let barcode_name = cuntrys[i].barcode_name;
+   let result = {prefix, prefix2, barcode_name};
+   cuntrys2.push(result);
+ 
+   
+ }
+console.log(cuntrys2);
+ */
+
+
+export {cuntrys,hiding, gebi, slctAll};
