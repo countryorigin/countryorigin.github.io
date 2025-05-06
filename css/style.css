@@ -107,7 +107,6 @@
 }
 .hero{
     width: 100%;
-    min-height: calc(100vh - 90px);
     background-color: var(--bkg-clr);
     display: flex;
     align-items: center;
@@ -180,6 +179,15 @@
 
     .hidWrd {
         font-size: 20px;
+    }
+    .titer{
+        font-size: 40px;
+        padding: 15px;
+        background-color: var(--mnCl);
+        color: white;
+    }
+    .hero{
+        background-color: white;
     }
     .nmbr-inp{
         width: calc(100% - 40px);
