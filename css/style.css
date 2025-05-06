@@ -7,7 +7,7 @@
 *{
     margin: 0;
     padding: 0;
-    outline: none;
+    -webkit-tap-highlight-color: transparent;
     font-family: 'poppins', sans-serif;
 }
 /* start pupab */
@@ -89,6 +89,7 @@
     padding: 5px 20px;
     border: 1px;
     border-radius: 5px;
+    outline: none;
     cursor: pointer
 }
 
@@ -126,6 +127,7 @@
     padding: 10px 10px 10px 40px;
     border-radius: 20px;
     border: 2px solid var(--mnCl);
+    outline: none;
     font-size: 14px;
     margin-top: 15px;
 }
