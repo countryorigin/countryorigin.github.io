@@ -6,7 +6,7 @@ import { cuntrys, gebi, slctAll } from "./cntris.js";
 slctAll(".searchBtn").forEach((el) => {
   el.addEventListener("click", () => {
     let inpt = gebi("nmbrInp").value;
-    if (inpt.length != 3) { gebi("rsltInp").innerHTML= 'The code is wrong.';return; }
+    if (inpt.length != 3) { gebi("rsltInp").innerHTML= 'The code is wrong';return; }
     gebi("rsltInp").innerHTML= searchCode(inpt);
   });
 });
@@ -46,7 +46,7 @@ inputFile.addEventListener("change", async (e) => {
       gebi("exist" ).innerHTML = `Barcode value is : <span id="barCode">${result}</span><br><br> 
        ${searchCode(codeCountry)}`; 
     } catch (err) {
-      gebi("exist").innerHTML = `No barcode found in the image.`;
+      gebi("exist").innerHTML = `No barcode found in the image`;
     }
   };
 });
