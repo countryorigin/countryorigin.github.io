@@ -119,6 +119,7 @@
     background-color: white;
     border-radius: 20px;
     cursor: pointer;
+    outline: none;
 }
 
 .nmbr-inp{
