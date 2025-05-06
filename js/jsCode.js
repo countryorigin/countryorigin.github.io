@@ -1,6 +1,17 @@
 import { BrowserMultiFormatReader } from "https://cdn.jsdelivr.net/npm/@zxing/browser@0.0.10/+esm";
-import { cuntrys, gebi } from "./cntris.js";
+import { cuntrys, gebi, slctAll } from "./cntris.js";
 
+
+/* search par input */
+slctAll(".searchBtn").forEach((el) => {
+  el.addEventListener("click", () => {
+    let inpt = gebi("nmbrInp").value;
+    if (inpt.length != 3) { gebi("rsltInp").innerHTML= 'The code is wrong.';return; }
+    gebi("rsltInp").innerHTML= searchCode(inpt);
+  });
+});
+
+/* search par image */
 const codeReader = new BrowserMultiFormatReader();
 
 const dropArea = gebi("drop-area");
@@ -23,8 +34,8 @@ inputFile.addEventListener("change", async (e) => {
   img.src = imageUrl;
   img.onload = async () => {
     gebi("cntnr").style.display = "block";
-      gebi("exist").style.display = "block";
-      gebi("divplac").className += " opPlc";
+    gebi("exist").style.display = "block";
+    gebi("divplac").className += " opPlc";
 
     try {
       const r = await codeReader.decodeFromImageElement(img);
@@ -32,23 +43,23 @@ inputFile.addEventListener("change", async (e) => {
       /* console.log("Barcode value:", cuntrys[5]);
       alert(`Barcode value : ${result}`); */
       let codeCountry = result.slice(0, 3) * 1;
-      
-
-      for (let i = 0; i < cuntrys.length; i++) {
-        let prefix = cuntrys[i].prefix;
-        let prefix2 = cuntrys[i].prefix2;
-        if (prefix < codeCountry && prefix2 > codeCountry) {
-          let barcode_name = cuntrys[i].barcode_name;
-          gebi("exist").innerHTML = `Barcode value is : <span id="barCode">${result}</span> 
-            <br><br>  Country of origin is : <span> ${barcode_name}</span>`;
-          return 0;
-        }
-        
-      }
-      gebi("exist").innerHTML = `Barcode value is : <span id="barCode">${result}</span> 
-      <br><br>  Country of origin is Not found in the database`;
+      gebi("exist" ).innerHTML = `Barcode value is : <span id="barCode">${result}</span><br><br> 
+       ${searchCode(codeCountry)}`; 
     } catch (err) {
       gebi("exist").innerHTML = `No barcode found in the image.`;
     }
   };
 });
+
+function searchCode(nmbr) {
+  for (let i = 0; i < cuntrys.length; i++) {
+    let prefix = cuntrys[i].prefix;
+    let prefix2 = cuntrys[i].prefix2;
+    if (prefix < nmbr && prefix2 > nmbr) {
+      let barcode_name = cuntrys[i].barcode_name;
+      
+      return ` Country of origin is : <span> ${barcode_name}</span>`;
+    }
+  }
+  return ` Country of origin is Not exist`;
+}

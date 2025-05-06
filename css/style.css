@@ -112,14 +112,39 @@
     align-items: center;
     justify-content: center;
 }
-#drop-area{
-    
+.drop-area{
     width: 500px;
     padding: 30px;
     text-align: center;
     background-color: white;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.nmbr-inp{
+    width: calc(60% - 40px);
+    padding: 10px 10px 10px 40px;
+    border-radius: 20px;
+    border: 2px solid var(--mnCl);
+    outline: none;
+    font-size: 14px;
+    margin-top: 15px;
+}
+.search-icon{
+    position: absolute;
+    top: 21px;
+    opacity: 80%;
+    left: 20%;
+    width: 30px;
+    color: var(--mnCl);
+}
+#rsltInp{
+    font-size: 20px;
+    margin-top: 10px;
+}
+#rsltInp span{
+    color: var(--gr);
+    font-weight: bold;
 }
 #img-view{
     width: 100%;
@@ -155,5 +180,12 @@
     .hidWrd {
         font-size: 20px;
     }
-    
+    .nmbr-inp{
+        width: calc(100% - 40px);
+    }
+    .search-icon{
+        left: 10px;
+        width: 20px;
+        top: 25px;
+    }
 }
