@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Select country of origin </title>
+</head>
+<body>
+    <!-- Start Bubebe -->
+    <div id="cntnr" class="hidjs cler" >
+      <div id="divplac" class="dvPlc  ">
+          <span class="clrear cler"  >×</span>
+          <hr/>
+          <p id="exist" class="exist hidjs"> </p> 
+          <br>
+          <button  class="okbtn cler" >Ok</button>
+          </div>
+          
+      </div>
+    </div>
+
+
+
+
+
+  <h1 class="titer">
+    Select country of origin
+  </h1>
+    <div class="hero">
+      
+      <label for="input-file" id="drop-area">
+        <input type="file" accept="image/*" id="input-file" hidden>
+        <div id="img-view">
+          <img src="imgs/icon.png" alt="upload image">
+          <span id="errImg" style="color: red; display: none;">Error upload Image</span>
+          <span>upload Image</span>
+        </div>
+        <span id="opNew"  class="okbtn opnBtn" >Open a new image</span>
+      </label>
+      
+    </div>
+    
+
+<script type="module" src="/js/jsCode.js"></script>
+
+<!-- <script type="module">
+   
+
+
+let cuntrys2=[];
+for(let i = 0; i < cuntrys.length; i++){
+  let prefix = cuntrys[i].prefix;
+  let prefix2
+  if (prefix.indexOf('-') > -1) {
+     prefix2 =  prefix.slice(prefix.indexOf('-')+1, prefix.length);
+     prefix =  prefix.slice(0 , prefix.indexOf('-'));
+  }else{
+    prefix2 = prefix;
+  }
+  
+  let barcode_name = cuntrys[i].barcode_name;
+  let result = {prefix, prefix2, barcode_name};
+  cuntrys2.push(result);
+
+  
+}
+gebi('rslt').innerHTML = JSON.stringify(cuntrys2, null, 2);
+console.log(cuntrys2);
+  </script> -->
+</body>
+</html>
