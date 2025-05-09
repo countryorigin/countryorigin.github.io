@@ -1,4 +1,5 @@
 import { BrowserMultiFormatReader } from "https://cdn.jsdelivr.net/npm/@zxing/browser@0.0.10/+esm";
+import{fnctn2, showMessage} from "./selction.js"
 import { cuntrys, gebi, slctAll } from "./cntris.js";
 
 /* search par input */
@@ -25,7 +26,16 @@ function rsltInp() {
 }
 /* end search par input */
 
+
+
+
+/* jlgggjlgjljkdjksjhkfsfjk 
+sdfsdgsfgdfhqsfhdfqsdqdsqfhksd */
+
+
+
 /* search par image */
+
 const codeReader = new BrowserMultiFormatReader();
 
 const dropArea = gebi("drop-area");
@@ -34,35 +44,36 @@ const imgView = gebi("img-view");
 const inputFile = gebi("input-file");
 inputFile.addEventListener("change", async (e) => {
   const file = e.target.files[0];
+  dropArea.setAttribute("for", "no");
+  
   if (!file) {
     gebi("errImg").style.display = "block";
+    return
   }
-
+gebi('opNew').style.display = "block";
   const imageUrl = URL.createObjectURL(file);
-
-  imgView.style.backgroundImage = `url(${imageUrl})`;
-  imgView.textContent = "";
+gebi('uploadedImage').src = imageUrl;
+  /* imgView.style.backgroundImage = `url(${imageUrl})`; */
+  /* imgView.textContent = ""; */
+  gebi('upImg').style.display = "none";
   imgView.style.border = 0;
+
 
   const img = new Image();
   img.src = imageUrl;
+  
   img.onload = async () => {
-    gebi("cntnr").style.display = "block";
-    gebi("exist").style.display = "block";
-    gebi("divplac").className += " opPlc";
 
     try {
       const r = await codeReader.decodeFromImageElement(img);
       let result = r.text;
-      /* console.log("Barcode value:", cuntrys[5]);
-      alert(`Barcode value : ${result}`); */
       let codeCountry = result.slice(0, 3) * 1;
-      gebi(
-        "exist"
-      ).innerHTML = `Barcode value is : <span id="barCode">${result}</span><br><br> 
-       ${searchCode(codeCountry)}`;
+     showMessage( `Barcode value is : <span id="barCode">${result}</span><br><br> 
+${searchCode(codeCountry)}`, 'success') ;
     } catch (err) {
-      gebi("exist").innerHTML = `No barcode found in the image`;
+      console.log('fat mna');
+      
+      fnctn2() 
     }
   };
 });
@@ -79,3 +90,7 @@ function searchCode(nmbr) {
   }
   return ` Country of origin is Not exist`;
 }
+gebi('opNew').addEventListener('click', () => {
+ inputFile.click();
+})
+export {  searchCode };

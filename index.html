@@ -21,9 +21,6 @@
     </div>
 
 
-  test
-
-
   <h1 class="titer">
     Select country of origin
   </h1>
@@ -40,21 +37,30 @@
         <span   class="okbtn searchBtn" >search</span>
   <p style="font-size: 35px;"> or</p>
   <br><br>
+
+<!-- image section -->
+
         <label for="input-file" id="drop-area" >
           <input type="file" accept="image/*" id="input-file" hidden>
+          <div class="instruction" id="instructions">  Drag to select the barcode area. </div>
           <div id="img-view">
-            <img src="imgs/icon.png" alt="upload image">
+            <img id="uploadedImage" src="imgs/icon.png" alt="upload image">
+            <div id="selectionBox"></div>
             <span id="errImg" style="color: red; display: none;">Error upload Image</span>
-            <span>upload Image</span>
+            <span id="upImg">upload Image</span>
           </div>
-          <span id="opNew"  class="okbtn opnBtn" >Open a new image</span>
+          <div id="loader">Analyzing...</div>
+          <div id="result"></div>
+          
         </label>
+          <br>
+          <span id="opNew"  class="okbtn opnBtn" >Open a new image</span>
       </div>
-     
       
     </div>
-    
-test     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script> -->
+     <!--  <script type="module" src="./js/selction.js"></script> -->
 <script type="module" src="./js/jsCode.js"></script>
 
 <!-- <script type="module">

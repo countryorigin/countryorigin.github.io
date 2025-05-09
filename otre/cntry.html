@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>كاشف الباركود الذكي</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            touch-action: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        #imageContainer {
+            position: relative;
+            border: 2px dashed #ddd;
+            margin: 20px 0;
+            touch-action: none;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+
+        #uploadedImage {
+            max-width: 100%;
+            display: none;
+        }
+
+        #result {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+
+        #loader {
+            display: none;
+            margin: 20px 0;
+        }
+
+        #selectionBox {
+            position: absolute;
+            border: 2px solid #050c8f;;
+            background: rgb(6 48 216 / 41%);
+            display: none;
+            pointer-events: none;
+        }
+
+        .instruction {
+            color: #666;
+            text-align: center;
+            margin: 10px 0;
+            display: none;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+</head>
+<body>
+    <h1>كاشف الباركود الذكي</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <div class="instruction" id="instructions">اسحب لتحديد منطقة الباركود</div>
+    <div id="imageContainer">
+        <img id="uploadedImage" src="#" alt="الصورة المرفوعة">
+        <div id="selectionBox"></div>
+    </div>
+    <div id="result"></div>
+    <div id="loader">جاري التحليل...</div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const resultDiv = document.getElementById('result');
+        const loader = document.getElementById('loader');
+        const instructions = document.getElementById('instructions');
+        const selectionBox = document.getElementById('selectionBox');
+        const imageContainer = document.getElementById('imageContainer');
+
+        let isSelecting = false;
+        let startX, startY, endX, endY;
+        let scaleX = 1, scaleY = 1;
+
+        // تحميل الصورة
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+                    resetSelection();
+                    analyzeImage();
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // تهيئة الصورة
+        uploadedImage.addEventListener('load', function() {
+            scaleX = uploadedImage.naturalWidth / uploadedImage.width;
+            scaleY = uploadedImage.naturalHeight / uploadedImage.height;
+        });
+
+        function showMessage(message, type) {
+            resultDiv.style.display = 'block';
+            resultDiv.className = type;
+            resultDiv.textContent = message;
+        }
+
+        function resetSelection() {
+            selectionBox.style.display = 'none';
+            instructions.style.display = 'none';
+            resultDiv.style.display = 'none';
+        }
+
+        // الكشف التلقائي
+        function analyzeImage() {
+            loader.style.display = 'block';
+            
+            Quagga.decodeSingle({
+                decoder: {
+                    readers: ['code_128_reader', 'ean_reader', 'upc_reader']
+                },
+                locate: true,
+                src: uploadedImage.src
+            }, function(result) {
+                loader.style.display = 'none';
+                
+                if(result && result.codeResult) {
+                    showMessage(`تم العثور على باركود: ${result.codeResult.code}`, 'success');
+                } else {
+                    showMessage('لم يتم العثور على باركود، الرجاء التحديد يدويًا', 'error');
+                    enableManualSelection();
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+        // التحديد اليدوي
+        function enableManualSelection() {
+            instructions.style.display = 'block';
+            
+            // أحداث اللمس
+            imageContainer.addEventListener('touchstart', startSelection);
+            document.addEventListener('touchmove', drawSelection);
+            document.addEventListener('touchend', endSelection);
+            
+            // أحداث الماوس
+            imageContainer.addEventListener('mousedown', startSelection);
+            document.addEventListener('mousemove', drawSelection);
+            document.addEventListener('mouseup', endSelection);
+        }
+
+        function startSelection(e) {
+            e.preventDefault();
+            isSelecting = true;
+            
+            const rect = imageContainer.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            startX = clientX - rect.left;
+            startY = clientY - rect.top;
+            
+            selectionBox.style.display = 'block';
+            updateSelectionBox();
+        }
+
+        function drawSelection(e) {
+            if (!isSelecting) return;
+            e.preventDefault();
+            
+            const rect = imageContainer.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            
+            endX = clientX - rect.left;
+            endY = clientY - rect.top;
+            
+            updateSelectionBox();
+        }
+
+        function endSelection() {
+            isSelecting = false;
+            analyzeSelectedArea();
+        }
+
+        function updateSelectionBox() {
+            const width = endX - startX;
+            const height = endY - startY;
+            
+            selectionBox.style.left = Math.min(startX, endX) + 'px';
+            selectionBox.style.top = Math.min(startY, endY) + 'px';
+            selectionBox.style.width = Math.abs(width) + 'px';
+            selectionBox.style.height = Math.abs(height) + 'px';
+        }
+
+        function analyzeSelectedArea() {
+            loader.style.display = 'block';
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = uploadedImage.naturalWidth;
+            canvas.height = uploadedImage.naturalHeight;
+            
+            // حساب الإحداثيات مع هامش 10%
+            const margin = 0.1;
+            const realX = (Math.min(startX, endX) * scaleX) * (1 - margin);
+            const realY = (Math.min(startY, endY) * scaleY) * (1 - margin);
+            const realWidth = (Math.abs(endX - startX) * scaleX) * (1 + margin);
+            const realHeight = (Math.abs(endY - startY) * scaleY) * (1 + margin);
+            
+            ctx.drawImage(
+                uploadedImage,
+                realX, realY, realWidth, realHeight,
+                0, 0, realWidth, realHeight
+            );
+            
+            // تحليل المنطقة المحددة
+            Quagga.decodeSingle({
+                decoder: {
+                    readers: ['code_128_reader', 'ean_reader', 'upc_reader']
+                },
+                locate: true,
+                src: canvas.toDataURL()
+            }, function(result) {
+                loader.style.display = 'none';
+                if(result && result.codeResult) {
+                    showMessage(`تم العثور على باركود: ${result.codeResult.code}`, 'success');
+                } else {
+                    showMessage('لم يتم العثور على باركود في المنطقة المحددة', 'error');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
