@@ -203,6 +203,14 @@
   color: var(--gr);
   font-weight: bold;
 }
+
+.inactive{
+  background-color: #999  !important;
+  cursor: not-allowed !important;
+}
+
+
+/* image inpout */
 #img-view {
   position: relative;
   width: 100%;

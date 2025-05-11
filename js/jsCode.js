@@ -7,6 +7,8 @@ let inpt = gebi("nmbrInp");
 inpt.addEventListener("keydown", (e) => {
   if (e.key == "Enter") {
     rsltInp();
+  }else{
+    gebi('srchBtn').classList.remove('inactive');
   }
 });
 
@@ -18,6 +20,7 @@ slctAll(".searchBtn").forEach((el) => {
 
 function rsltInp() {
   let inptVl = inpt.value;
+  gebi('srchBtn').classList.add('inactive');
   if (inptVl.length != 3) {
     gebi("rsltInp").innerHTML = "The code is wrong";
     return;
