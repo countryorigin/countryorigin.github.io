@@ -4,9 +4,13 @@ import { cuntrys, gebi, slctAll } from "./cntris.js";
 
 /* search par input */
 let inpt = gebi("nmbrInp");
-inpt.addEventListener("keydown", (e) => {
+inpt.addEventListener("keyup", (e) => {
+  console.log(inpt.value.length);
+  
   if (e.key == "Enter") {
     rsltInp();
+  }else if (inpt.value.length != 3) {
+    gebi('srchBtn').classList.add('inactive');
   }else{
     gebi('srchBtn').classList.remove('inactive');
   }
